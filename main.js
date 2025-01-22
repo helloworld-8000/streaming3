@@ -4,8 +4,8 @@ import 'dotenv/config';
 const server = express()
 
 const streamkey = process.env.streamkey
-const video = "hajilok.mov"
-const audio = "https://stream.zeno.fm/ez4m4918n98uv";
+const video = "radiostreaming.mp4"
+const audio = "https://stream.zeno.fm/av6xzace6ehvv";
 
 const ffmpegCommand = [
   'ffmpeg',
