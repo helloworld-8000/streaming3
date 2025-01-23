@@ -4,8 +4,8 @@ import 'dotenv/config';
 const server = express()
 
 const streamkey = process.env.streamkey
-const video = "radiostreaming.mp4"
-const audio = "https://stream.zeno.fm/av6xzace6ehvv";
+const video = "streaming2.mp4"
+const audio = "https://zstudioltd.my.id/songs/streaming2.mp3";
 
 const ffmpegCommand = [
   'ffmpeg',
