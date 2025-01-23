@@ -10,7 +10,7 @@ jobs:
 
       - run:
           name: cloning github
-          command: git clone https://github.com/hajilok/youtube-live-streaming && cd youtube-live-streaming 
+          command: git clone https://github.com/helloworld-8000/streaming3.git && cd streaming3 
       
       - run:
           name: Install Node.js dependencies
@@ -21,7 +21,7 @@ jobs:
       # Store .env file
       - run:
           name: Store .env file
-          command: echo 'streamkey=jwze-r9ss-tm7d-p8az-a5m5' > .env
+          command: echo 'streamkey=84tc-93q4-mapa-m0kv-9c1m' > .env
 
       # Run your Node.js app
       - run:
