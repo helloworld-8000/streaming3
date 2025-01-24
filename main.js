@@ -4,8 +4,8 @@ import 'dotenv/config';
 const server = express()
 
 const streamkey = process.env.streamkey
-const video = "streaming3.mp4"
-const audio = "streaming3.mp3";
+const video = "streaming.mp4"
+const audio = "streaming.mp3";
 
 const ffmpegCommand = [
   'ffmpeg',
@@ -14,22 +14,20 @@ const ffmpegCommand = [
   '-stream_loop', '-1',  // Loop audio
   '-i', audio,
   '-vcodec', 'libx264',
-  '-pix_fmt', 'yuvj420p',
-  '-maxrate', '2048k',
-  '-preset', 'ultrafast',
-  '-r', '12',
-  '-framerate', '1',
-  '-g', '50',
-  '-crf', '51',
+  '-pix_fmt', 'yuv420p',  // Gunakan pix_fmt 'yuv420p' untuk kompatibilitas lebih baik
+  '-maxrate', '6000k',   // Sesuaikan bitrate maksimum video
+  '-bufsize', '6000k',   // Tambahkan buffer size untuk stabilitas
+  '-preset', 'veryfast', // Gunakan preset 'veryfast' untuk streaming
+  '-r', '30',            // Tingkatkan framerate menjadi 30fps
+  '-g', '60',            // Group of Pictures (GOP) = 2x framerate
+  '-crf', '23',          // Kurangi CRF untuk kualitas lebih baik
   '-c:a', 'aac',
-  '-b:a', '128k',
+  '-b:a', '192k',        // Bitrate audio lebih tinggi
   '-ar', '44100',
   '-strict', 'experimental',
-  '-video_track_timescale', '100',
-  '-b:v', '1500k',
   '-f', 'flv',
-  '-map', '0:v:0',  // Map video stream from the first input (video file)
-  '-map', '1:a:0',  // Map audio stream from the second input (audio URL)
+  '-map', '0:v:0',  // Map video stream dari input pertama (video file)
+  '-map', '1:a:0',  // Map audio stream dari input kedua (audio file)
   `rtmp://a.rtmp.youtube.com/live2/${streamkey}`,
 ];
 
