@@ -5,7 +5,7 @@ const server = express()
 
 const streamkey = process.env.streamkey
 const video = "streaming3.mp4"
-const audio = "https://zstudioltd.my.id/songs/streaming3.mp3";
+const audio = "streaming3.mp3";
 
 const ffmpegCommand = [
   'ffmpeg',
